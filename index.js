@@ -6,9 +6,9 @@ const port = 8002;
 app.use('/',require('./routes'));
 
 
-//seeting the view engine as ejs and views folder
+//setting the view engine as ejs and views folder
 app.set('view engine','ejs');
-app.set('view','./views');
+app.set('views','./views');
 
 //run server on port
 app.listen(port,function(err){
