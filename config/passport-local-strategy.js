@@ -45,4 +45,30 @@ passport.deserializeUser(function(id,done){
     });
 });
 
+//sending the current signed user's data to the views
+//1 check if the user is authenticated
+passport.checkAuthentication = function(req,res,next){
+
+    if(req.isAuthenticated()){
+        //user is signed in, then pass on the request to the next function (controller's action)
+        return next();
+    }
+    //if the user is not signed in
+
+    return res.redirect('/users/sign-in');
+
+}
+
+passport.setAuthenticatedUser = function(req,res,next){
+
+    if(req.isAuthenticated()){
+        //transfer the requests's user data to the response's users locals
+        res.locals.user = req.user;
+        //req.user contains the current signed in user from the session cookie
+    }
+   
+    next();
+
+}
+
 module.exports = passport;

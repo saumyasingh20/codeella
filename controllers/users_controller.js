@@ -2,7 +2,7 @@
 const User = require('../models/user');
 module.exports.profile = function(req,res){
     return res.render('user_profile',{
-        title:"User Profile"
+        title:`User Profile`
     });
 };
 
@@ -13,12 +13,19 @@ module.exports.posts = function(req,res){
 };
 //reender the sign up page
 module.exports.signUp = function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
+
     return res.render('user_sign_up',{
         title:"Codeella | Sign Up"
     });
 };
 //reender the sign in page
 module.exports.signIn = function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('user_sign_in',{
         title:"Codeella | Sign In"
     });
@@ -59,5 +66,5 @@ module.exports.create =function(req,res){
 }
 //sign in and create a ssession for the user
 module.exports.createSession = function(req,res){
-     //to do later
+    return res.redirect('/');
 }
