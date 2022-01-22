@@ -15,7 +15,18 @@ const passportLocal = require('./config/passport-local-strategy');
 //to store the session cookies in mongo db
 const MongoStore = require('connect-mongo');
 
+const sassMiddleware = require('node-sass-middleware');
 
+app.use(sassMiddleware({
+
+    src:'/assets/scss',
+    dest:'/assets/css',
+    debug:true,
+    outputStyle:'extended',
+    prefix:'/css'
+
+
+}));
 //middleware to parse the requests
 app.use(express.urlencoded());
 
