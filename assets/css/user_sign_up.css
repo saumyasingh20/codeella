@@ -1,0 +1,23 @@
+form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center; }
+
+input {
+  margin: 1%;
+  font-size: 1.33rem;
+  font-family: sans-serif;
+  border-top: none;
+  border-left: none;
+  border-right: none; }
+
+input:focus {
+  outline: none; }
+
+#sign-up {
+  width: 11%;
+  margin: 1%;
+  font-size: 1.33rem; }
