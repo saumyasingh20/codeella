@@ -1,6 +1,6 @@
 <link rel="stylesheet" href = "/css/home.css">
 <h1> 
-    Codeella's Home Page
+    Welcome to Codeella
 </h1>
 
 <section id = "feed-posts">
@@ -10,7 +10,24 @@
         <textarea name = "content" cols = "50" rows = "5" placeholder="Type here.."></textarea>
 
         <input type="submit" value="Post">
-
-
     </form>
+    <div id = "posts-list-container">
+        <ul>
+          <% for( post of posts){ %>
+
+            <li>
+                <p>
+                    <%= post.content%>
+                <br>
+
+                <small>
+                    <%= post.user.first_name %>
+                </small>
+                </p>
+                
+            </li>
+           
+         <%  }  %>
+        </ul>
+    </div>
 </section>
