@@ -14,6 +14,8 @@ router.get('/',homeController.home);
 //since we are making requests to users middleware i.e users/profile and all 
 router.use('/users',require('./users'));
 
+router.use('/posts',require('./posts'));
+
 
 
 

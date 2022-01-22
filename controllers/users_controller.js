@@ -6,11 +6,7 @@ module.exports.profile = function(req,res){
     });
 };
 
-module.exports.posts = function(req,res){
-    return res.render('user_posts',{
-        title:"User Posts"
-    });
-};
+
 //reender the sign up page
 module.exports.signUp = function(req,res){
     if(req.isAuthenticated()){
