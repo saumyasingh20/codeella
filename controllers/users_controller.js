@@ -42,7 +42,7 @@ module.exports.create =function(req,res){
    }
    User.findOne({email:req.body.email},function(err,user){
        if(err){
-           console.log('error in finding user in sign up process');
+           req.flash('error','error in finding user in sign up process');
            return;
        }
 
@@ -50,14 +50,15 @@ module.exports.create =function(req,res){
         console.log("user doesn't exist so create user in db");
            User.create(req.body,function(err,user){
             if(err){
-                console.log('error in creating user in sign up process');
+                req.flash('error','error in creating user in sign up process');
                 return;
             }
-            console.log("user created in db");
+            req.flash('success','Sign Up Successful !');
+          
             return res.redirect('/users/sign-in');
            });
        }else{
-        console.log("user already exists so sign in");
+        req.flash('error','User Account already exists , please try signing in');
         return res.redirect('/users/sign-in');
        }
    })
@@ -67,13 +68,13 @@ module.exports.create =function(req,res){
 }
 //sign in and create a ssession for the user
 module.exports.createSession = function(req,res){
-    req.flash('success','Logged in successfully !')
+    req.flash('success','Logged in successfully !');
     return res.redirect('/');
 }
 
 module.exports.destroySession = function(req,res){
     req.logout();
-    req.flash('success','You have been logged out')
+    req.flash('success','You have been logged out');
     return res.redirect('/');
 }
 
