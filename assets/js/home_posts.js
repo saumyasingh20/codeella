@@ -15,6 +15,9 @@
                
                 $('#posts-list-container>ul').prepend(newPost);
                 deletePost($(' .delete-post-button', newPost));
+                // call the create comment class
+                
+                new PostComments(data.data.post._id);
                 
                 new Noty({
                     theme:'relax',
@@ -118,7 +121,7 @@ let convertPostsToAjax = function(){
         
         let postId = self.prop('id').split("-")[1];
         
-        // new PostComments(postId);
+        new PostComments(postId);
     });
 }
 
