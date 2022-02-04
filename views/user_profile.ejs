@@ -1,6 +1,6 @@
 <link rel="stylesheet" href = "/css/user_profile.css">
 
-<img src = "<%= user.avatar %>" alt = "<%= user.name %>" width = "100">
+<img src = "<%= profile_user.avatar %>" alt = "<%= profile_user.name %>" width = "100">
 
 <h1>
     <%= profile_user.name %>'s Profile
@@ -16,6 +16,6 @@
 <%}else{%>    
     <!-- else show only the profile info -->
     <p><%= profile_user.name %></p>
-    <p><%= profile_user.email %></p>
+    
 <%} %>
 
