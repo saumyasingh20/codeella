@@ -1,28 +1,47 @@
-//creating a schema for the user using mongoose odm
 const mongoose = require('mongoose');
 
+const multer = require('multer');
+const path = require('path');
+const AVATAR_PATH = path.join('/uploads/users/avatars');
+
 const userSchema = new mongoose.Schema({
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true
     },
-    password:{
+    password: {
         type: String,
         required: true
     },
-    first_name:{
+    name: {
         type: String,
         required: true
     },
-    last_name:{
+    avatar: {
         type: String
     }
-},{
-    //to store the created at and updated fields of user
-    timestamps:true
+}, {
+    timestamps: true
 });
 
-const User = mongoose.model('User',userSchema);
+
+let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join(__dirname, '..', AVATAR_PATH));
+    },
+    filename: function (req, file, cb) {
+      cb(null, file.fieldname + '-' + Date.now());
+    }
+  });
+
+
+// static
+userSchema.statics.uploadedAvatar = multer({storage:  storage}).single('avatar');
+userSchema.statics.avatarPath = AVATAR_PATH;
+
+
+
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

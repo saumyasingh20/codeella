@@ -6,7 +6,7 @@
     <section id = "feed-posts">
         <% if(locals.user) { %>
             <h1> 
-                Welcome, <%= locals.user.first_name %> ! How are you doing today ?
+                Welcome, <%= locals.user.name %> ! How are you doing today ?
             </h1>
                 <%  } else { %>
                 <h1> 
@@ -35,7 +35,7 @@
         <h4>Friends</h4>
         <% for(u of all_users){ %>
             <p>
-                <a href = "/users/profile/<%= u.id %>"> <%= u.first_name %> <%= u.last_name %></a>
+                <a href = "/users/profile/<%= u.id %>"> <%= u.name %> <%= u.last_name %></a>
             </p>
 
         <% } }%>

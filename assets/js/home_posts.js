@@ -54,7 +54,7 @@
                     ${post.content}
                 <br>
                 <small>
-                     ${post.user.first_name} 
+                     ${post.user.name} 
                 </small>
                 
                 </p>
