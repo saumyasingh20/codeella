@@ -21,6 +21,7 @@ passport.use(new googleStrategy({
                     name: profile.displayName,
                     email: profile.emails[0].value,
                     password: crypto.randomBytes(20).toString('hex')
+                    // avatar: profile.photos[0].value
 
                 },function(err,user){
                     if(err){console.log('error in google strategy-passport',err);return;}
