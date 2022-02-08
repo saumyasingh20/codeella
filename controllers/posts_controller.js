@@ -2,18 +2,17 @@
 
 const Post = require('../models/post');
 const Comment = require('../models/comment');
+const postsMailer = require('../mailers/posts_mailer');
 module.exports.create = async function(req, res){
     try{
         let post = await Post.create({
             content: req.body.content,
             user: req.user._id
         });
-        
+        post = await post.populate('user','name email');
+      
         if (req.xhr){
-            //  to populate just the name of the user (we'll not want to send the password in the API)
-            post = await post.populate('user','name');
-
-           
+            postsMailer.newPost(post);
             return res.status(200).json({
                 data: {
                     post: post
