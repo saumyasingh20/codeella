@@ -2,13 +2,13 @@ const nodeMailer = require('../config/nodemailer');
 
 //exporting a method
 exports.newPost = (post) => {
-    console.log('inside new post mailer');
-
+    
+    let htmlString = nodeMailer.renderTemplate({post:post},'/posts/new_post.ejs');
     nodeMailer.transporter.sendMail({
         from: 'saumyalearnsdevelopment@gmail.com',
         to: post.user.email,
         subject:`New Post on Codeella Published !`,
-        html: `<big> Yay ! Your new post  <i> <b>${post.content} </b> </i> on Codeella is now published ! </big>`
+        html: htmlString
 
     }, (err,info) => {
         if(err){
