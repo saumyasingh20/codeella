@@ -57,7 +57,7 @@ module.exports.create = async function(req,res){
 module.exports.destroy = async function(req, res){
     try{
         let comment = await Comment.findById(req.params.id);
-        // if ((comment.user == req.user.id) || (comment.post == req.user.id)){
+        // if ((comment.user == req.user.id) || (comment.post.user == req.user.id)){
         if (comment.user == req.user.id){
             let postId = comment.post;
 
