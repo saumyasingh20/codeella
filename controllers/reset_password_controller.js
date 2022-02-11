@@ -30,10 +30,8 @@ module.exports.validateUser = async function(req,res){
                     isValid:true
                 },function(err,resetToken){
                     ResetPasswordLinkMailer.sendResetPasswordLink(resetToken,user);
-
-                    return res.render('reset_password_success',{
-                        title:"Reset Password"
-                    })
+                    req.flash('success'," A link to reset your password has been sent on your registered email address successfully !");
+                    return res.redirect('/users/sign-in');
                 });
                
             }else{
