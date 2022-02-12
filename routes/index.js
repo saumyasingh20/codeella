@@ -23,5 +23,7 @@ router.use('/api',require('./api'));
 
 router.use('/reset-password',require('./reset_password'));
 
+router.use('/likes',require('./likes'));
+
 
 module.exports = router;

@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const likeSchema = new mongoose.Schema({
     user:{
         type:mongoose.Schema.ObjectId,
-        ref:User,
         required:true
     },
     //likeable is the object on which like has been placed like or comment
